@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     const savedContacts = localStorage.getItem('contactListItems');
-    if (savedContacts && JSON.parse(savedContacts).length > 0) {
+    if (savedContacts.length > 0) {
       this.setState({ contacts: JSON.parse(savedContacts) });
     }
   }
