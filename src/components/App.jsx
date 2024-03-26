@@ -3,7 +3,7 @@ import { ContactList } from './ContactList/ContactList';
 import { Component } from 'react';
 import { Filter } from './FilterContact/FilterContact';
 
-export class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -74,4 +74,6 @@ export class App extends Component {
       </div>
     );
   }
-}
+};
+
+export default App;
