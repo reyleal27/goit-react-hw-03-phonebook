@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     const savedContacts = localStorage.getItem('contactListItems');
-    if (savedContacts.length > 0) {
+    if (savedContacts && JSON.parse(savedContacts).length > 0) {
       this.setState({ contacts: JSON.parse(savedContacts) });
     }
   }
@@ -66,6 +66,7 @@ class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm addContact={this.addContact} contacts={contacts} />
 
+      <h2>Contacts</h2>
         <Filter filter={filter} setFilter={this.setFilter} />
         <ContactList
           filterContact={this.filterContact}
