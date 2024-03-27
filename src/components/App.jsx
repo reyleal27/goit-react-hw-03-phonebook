@@ -19,10 +19,11 @@ class App extends Component {
 
   componentDidMount() {
     const savedContacts = localStorage.getItem('contactListItems');
-    if (savedContacts.length > 0) {
+    if (savedContacts && JSON.parse(savedContacts).length > 0) {
       this.setState({ contacts: JSON.parse(savedContacts) });
-    }
+    } 
   }
+
   componentDidUpdate(_prevProps, prevState) {
     console.log('COmponentDid Update');
     if (prevState.contacts !== this.state.contacts) {
@@ -68,10 +69,10 @@ class App extends Component {
 
       <h2>Contacts</h2>
         <Filter filter={filter} setFilter={this.setFilter} />
-        <ContactList
+        {this.state.contacts.length > 0 ? <ContactList
           filterContact={this.filterContact}
           deleteContact={this.deleteContact}
-        />
+        /> : <p className='no-contacts'> No Saved Contacts</p>}
       </div>
     );
   }
